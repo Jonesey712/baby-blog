@@ -18,6 +18,15 @@ const Create = () => {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(blog)
-        }).then()
+        }).then(() => {
+            setIsPending(false);
+            history.push('/');
+        })
     }
+
+    return (
+        <div className="create">
+            
+        </div>
+    )
 }
