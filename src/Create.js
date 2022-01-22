@@ -14,7 +14,7 @@ const Create = () => {
 
         setIsPending(true);
 
-        fetch('http://localhost:8000/blogs', {
+        fetch('http://localhost:3000/blogs', {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(blog)
@@ -26,7 +26,35 @@ const Create = () => {
 
     return (
         <div className="create">
-            
+            <h2>Add a New Blog</h2>
+            <form onSubmit={handleSubmit}>
+                <label>Blog Title</label>
+                <input
+                    type="text"
+                    required
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                />
+                <label>Blog Body:</label>
+                <textarea
+                    required
+                    value={body}
+                    onChange={(e) => setBody(e.target.value)}
+                />
+                <label>Blog author:</label>
+                <select
+                    value={author}
+                    onChange={(e) => setAuthor(e.target.value)}
+                >
+                    <option value="Jones">Jones</option>
+                    <option value="Monique">Monique</option>
+                    <option value="CJ">CJ</option>
+                </select>
+                {!isPending && <button>Add Blog</button>}
+                {isPending && <button disabled>Adding Blog</button>}
+            </form>
         </div>
-    )
+    );
 }
+
+export default Create
